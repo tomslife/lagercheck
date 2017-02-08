@@ -1,0 +1,358 @@
+@charset "UTF-8";
+/* CSS Document */
+
+html, body {}
+
+.uis-page {
+    -webkit-backface-visibility: hidden; 
+}
+
+
+.uis-mobile-viewport-transitioning,
+.uis-mobile-viewport-transitioning .ui-page {
+    overflow: visible;
+}
+
+/* ALLGEMEIN
+******************************************************************/
+
+/* Padding + Margin entfernen */
+ul, li, div, a {padding:0; margin:0;}
+
+/* Alle Überschriften in Blau */
+h1, h2, h3 {color:#106bac;}
+
+h3 {margin:0;padding:0}
+h6 {margin:0;padding:0;font-size:9px;color:eeeeee}
+
+.nobr {white-space:nowrap;}
+
+.ui-btn-up-b,
+.ui-btn-hover-b,
+.ui-btn-hover-b:visited,
+.ui-btn-hover-b:hover,
+.ui-btn-down-b,
+.ui-btn-down-b:visited,
+.ui-btn-down-b:hover
+{
+	border: 1px solid #cccccc /*{b-bup-border}*/;
+	background: #efefee /*{b-bup-background-color}*/;
+	font-weight: bold;
+	color: #706f6f /*{b-bup-color}*/;
+	text-shadow: 0 /*{b-bup-shadow-x}*/ 0 /*{b-bup-shadow-y}*/ 0 /*{b-bup-shadow-radius}*/ #eeeeee /*{b-bup-shadow-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #efefee /*{b-bup-background-start}*/), to( #efefee /*{b-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #efefee /*{b-bup-background-start}*/, #efefee /*{b-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #efefee /*{b-bup-background-start}*/, #efefee /*{b-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #efefee /*{b-bup-background-start}*/, #efefee /*{b-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #efefee /*{b-bup-background-start}*/, #efefee /*{b-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #efefee /*{b-bup-background-start}*/, #efefee /*{b-bup-background-end}*/);
+}
+
+/* HEADER
+**********/
+.header {height:44px;}
+.header h1 {color:#106bac;}
+.header a {color:#ffffff; font-weight:normal !important; text-decoration:none;}
+.header a:hover {background-image:inherit; font-weight:bold !important;}
+
+/* Überschrift */
+.ui-title {margin-top:13px !important}
+
+/* BackButton */
+.navBarBackButton {height:30px;margin:4px;cursor:pointer;}
+.navBarBackButtonLinks {float:left;width:15px;height:30px;}
+.navBarBackButtonMitte {float:left;height:30px;line-height:30px;padding:0 3px 0 2px;background-image:url(../images/BackButtonMitte.png);background-repeat:repeat-x;background-size:auto;font-size:11px;}	
+.navBarBackButtonRechts {float:left;width:5px;height:30px;}
+
+
+/* FOOTER
+**********/
+
+/* Tabs - Generell */
+#navbar {margin:0; padding:0;}
+.tabs {margin:0 auto; padding:0; height:49px;}
+.tabs .ui-btn-inner {padding:0;margin:0;}
+
+/* Tabbar-Icons ohne Rundung */
+.ui-icon {-webkit-border-radius:0px;border-radius:0px;}
+
+.ui-bar {padding:0;margin:0}
+
+/* TabBar - Span mit Text nach unten */
+.tabs span span:first-child {color:#555555; font-size:11px; bottom:-2px}
+/* TabBar - Span mit Icon */
+.tabs span span:last-child {margin-top:-2px;padding:0; display:block !important; margin-left:-15px !important;}
+
+/* Text aktiver Tabs setzen / Hintergrund-Bild bewegen */
+.ui-btn-active span {background-position:bottom;color:#ffffff !important;}
+
+/* TabBar-Icons */
+.ui-icon-iconCheck {background-image:url(../images/tabCheck.png);background-size:cover;width:30px;height:30px}
+.ui-icon-iconKlassen {background-image:url(../images/tabLagerklassen.png);background-size:cover;width:30px;height:30px;}
+.ui-icon-iconKontakt {background-image:url(../images/tabKontakt.png);background-size:cover;width:30px;height:30px;}
+
+
+
+/* CHECK TAB
+******************************************************************/
+
+/*  Zahlen-Feld DIV */
+#contentCheck {position:absolute; width:100%; height:auto; margin:0; padding:0; top:45px; bottom:47px; overflow:hidden; background-color:#ededed;}
+
+/* Zahlen Buttons generell */
+.lgkButton {text-align:center;width:20%;height:16%;font-weight:bold;}
+
+/* Zahlen Buttons im Initialzustand */
+.lgkButtonInitial {
+	/* -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset -2px -2px 2px 0px #b4b3b3; */
+	box-shadow:inset -4px -4px 6px -3px #b4b3b3;
+	background: -moz-linear-gradient(top, #f9f8f8 0%, #e3e3e2 58%, #cacac9 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f8f8), color-stop(58%,#e3e3e2), color-stop(100%,#cacac9)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #f9f8f8 0%,#e3e3e2 58%,#cacac9 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #f9f8f8 0%,#e3e3e2 58%,#cacac9 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #f9f8f8 0%,#e3e3e2 58%,#cacac9 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #f9f8f8 0%,#e3e3e2 58%,#cacac9 100%); /* W3C */
+	background-color:inherit;
+	-moz-border-radius:0px;
+	-webkit-border-radius:0px;
+	border-radius:0px;
+	border:0px solid #dcdcdc;
+	color:#888888;
+	text-shadow:none !important;
+}
+
+/* Zahlen Buttons im Hover und gedrückten Zustand */
+.lgkButtonHover:hover, .lgkButtonPressed {
+	/* -moz-box-shadow:inset 0px 0px 3px 4px #5c5c5c;
+	-webkit-box-shadow:inset 0px 0px 3px 4px #5c5c5c; */
+	box-shadow:inset 4px 4px 6px -3px #5c5c5c, inset -4px -4px 6px -3px #bebebe;
+	background: -moz-linear-gradient(top, #c1c0c0 0%, #989897 58%, #737272 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c1c0c0), color-stop(58%,#989897), color-stop(100%,#737272)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #c1c0c0 0%,#989897 58%,#737272 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #c1c0c0 0%,#989897 58%,#737272 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #c1c0c0 0%,#989897 58%,#737272 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #c1c0c0 0%,#989897 58%,#737272 100%); /* W3C */
+	background-color:#9e9e9e;
+	-moz-border-radius:1px;
+	-webkit-border-radius:1px;
+	border-radius:1px;
+	border:0px solid #dcdcdc;
+	color:#ffffff;
+	text-shadow:none;
+}
+
+/* Resultat-Button generell */
+.resultButton {height:20%;text-shadow:none !important;font-size:14px;}
+.resultButton a {color:#888888;text-decoration:none;}
+
+.resultButtonActive {
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #999999;
+	-moz-box-shadow:
+		0px 0px 0px rgba(000,000,000,0),
+		inset 0px 0px 8px rgba(238,238,238,1);
+	-webkit-box-shadow:
+		0px 0px 0px rgba(000,000,000,0),
+		inset 0px 0px 8px rgba(238,238,238,1);
+	box-shadow:
+		0px 0px 0px rgba(000,000,000,0),
+		inset 0px 0px 8px rgba(238,238,238,1);
+	text-shadow:
+		0px 0px 0px rgba(000,000,000,0),
+		0px 0px 0px rgba(255,255,255,0);
+}
+
+.resultButtonActive a {color:#ffffff;font-size:22px}
+
+/* Resultat-Button Farbe nach Ergebnis-Ermittlung */
+
+/* Grüne Basis-Farbe: 009717 */
+.resultButtonGreen {
+	background: -moz-linear-gradient(
+		top,
+		#19a12e 0%,
+		#008815);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#19a12e),
+		to(#008815));
+	}
+/* Grüne Hover-Farbe, in Photoshop 10 Punkte dunkler */
+.resultButtonGreen:hover {
+	background: -moz-linear-gradient(
+		top,
+		#008815 0%,
+		#008815);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#008815),
+		to(#008815));
+	}
+.resultButtonGreen:active {
+	position:relative;
+	top:1px;
+	}
+
+/* Gelbe Basis-Farbe: ffbd00 */
+.resultButtonYellow {
+	background: -moz-linear-gradient(
+		top,
+		#ffc219 0%,
+		#e6a900);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#ffc219),
+		to(#e6a900));
+	}
+/* Gelbe Hover-Farbe, in Photoshop 10 Punkte dunkler */
+.resultButtonYellow:hover {
+	background: -moz-linear-gradient(
+		top,
+		#e6a900 0%,
+		#e6a900);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#e6a900),
+		to(#e6a900));
+	}
+.resultButtonYellow:active {
+	position:relative;
+	top:1px;
+	}
+
+/* Rote Basis Farbe: #C41111 */
+.resultButtonRed {
+	background: -moz-linear-gradient(
+		top,
+		#ca2828 0%,
+		#b10f0f);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#ca2828),
+		to(#b10f0f));
+	}
+/* Rote Hover-Farbe, in Photoshop 10 Punkte dunkler */
+.resultButtonRed:hover {
+	background: -moz-linear-gradient(
+		top,
+		#b10f0f 0%,
+		#b10f0f);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#b10f0f),
+		to(#b10f0f));
+	}
+.resultButtonRed:active {
+	position:relative;
+	top:1px;
+	}
+
+
+/* Resultat-Button Text */
+#resultLabelSpan {width:100%;text-align:center;margin:0;padding:0;}
+
+/* RESULTAT-POPUP
+******************/
+#popupDialog {text-shadow:none !important; opacity:0.9}
+#popupDialog h3 {padding:3px; color:#ffffff;white-space:normal; text-overflow:none; text-align:center; text-shadow:none !important;}
+#popupContent {color:#ffffff; text-shadow:none; text-align:center;}
+#popupContent table {text-align:left; font-size:14px;}
+#popupContent td {padding:0px 10px 5px 0px;}
+#popupContent span {font-weight:bold !important;}
+
+.resultPopupGreen {background: -moz-linear-gradient(top,#19a12e 0%,#008815);background: -webkit-gradient(linear, left top, left bottom, from(#19a12e),to(#008815));border:4px #fff solid; outline:4px #009717 solid;}
+.resultPopupGreen a {background: -moz-linear-gradient(top,#19a12e 0%,#008815);background: -webkit-gradient(linear, left top, left bottom, from(#19a12e),to(#008815));}
+.resultPopupGreen a:hover {background: -moz-linear-gradient(top,#008815 0%,	#008815);background: -webkit-gradient(linear, left top, left bottom, from(#008815),to(#008815));}
+.resultPopupGreen a:active {position:relative; top:1px;}
+
+.resultPopupYellow {background: -moz-linear-gradient(top,#ffc219 0%,#e6a900);background: -webkit-gradient(linear, left top, left bottom, from(#ffc219),to(#e6a900));border:4px #fff solid; outline:4px #ffbd00 solid;}
+.resultPopupYellow a {background: -moz-linear-gradient(top,#ffc219 0%,#e6a900);background: -webkit-gradient(linear, left top, left bottom, from(#ffc219),to(#e6a900));}
+.resultPopupYellow a:hover {background: -moz-linear-gradient(top,#e6a900 0%,	#e6a900);background: -webkit-gradient(linear, left top, left bottom, from(#e6a900),to(#e6a900));}
+.resultPopupYellow a:active {position:relative; top:1px;}
+
+
+.resultPopupRed {background: -moz-linear-gradient(top,#ca2828 0%,#b10f0f);background: -webkit-gradient(linear, left top, left bottom, from(#ca2828),to(#b10f0f));border:4px #fff solid; outline:4px #c41111 solid;}	
+.resultPopupRed a {background: -moz-linear-gradient(top,#ca2828 0%,	#b10f0f);background: -webkit-gradient(linear, left top, left bottom, from(#ca2828),to(#b10f0f));}
+.resultPopupRed a:hover {background: -moz-linear-gradient(top,#b10f0f 0%,	#b10f0f);background: -webkit-gradient(linear, left top, left bottom, from(#b10f0f),to(#b10f0f));}
+.resultPopupRed a:active {position:relative; top:1px;}
+
+#zurueckButton {display:inline-block !important; width:80% !important; height:40px; line-height:40px; margin:15px auto 0px;color:#fff !important; opacity:1.0; 	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #ffffff;
+	-moz-box-shadow:
+		0px 0px 0px rgba(000,000,000,0),
+		inset 0px 0px 8px rgba(238,238,238,1);
+	-webkit-box-shadow:
+		0px 0px 0px rgba(000,000,000,0),
+		inset 0px 0px 8px rgba(238,238,238,1);
+	box-shadow:
+		0px 0px 0px rgba(000,000,000,0),
+		inset 0px 0px 8px rgba(238,238,238,1);
+	text-shadow:
+		0px 0px 0px rgba(000,000,000,0),
+		0px 0px 0px rgba(255,255,255,0);
+text-decoration:none}
+
+
+
+/* LAGERKLASSEN TAB
+******************************************************************/
+.listview a {padding:3px 30px 3px 7px !important;}
+.listview table {padding:0; margin:0; font-size:14px;}
+
+.listViewNumber {width:44px; height:40px; color:#106bac;}
+
+.ui-icon-iconArrow {background-image:url(../images/iconArrow.png);background-size:cover;width:14px;height:20px;}
+
+.contentKlasse {}
+
+.contentKlasse h1 {display:none;}
+.contentKlasse h2 {padding:0; margin:0;}
+
+/* Aufzählungen */
+.contentKlasse ol {padding:0px; margin:0px 0px 25px 20px;}
+.contentKlasse li {padding:0px; margin-bottom:5px;}
+.contentKlasse p {margin-bottom:10px}
+
+#contentLagerklsassen .ui-btn-hover-b a {color:#ffffff !important;}
+#contentLagerklsassen .ui-btn-hover-b .listViewNumber {color:#ffffff !important;}
+#contentLagerklsassen .ui-btn-hover-b span {background-position:bottom;}
+
+#contentLagerklassen .ui-btn-active {background:#19579b !important;}
+#contentLagerklassen .ui-btn-active a {color:#ffffff !important;}
+#contentLagerklassen .ui-btn-active .listViewNumber {color:#ffffff !important;}
+
+/* KONTAKT TAB
+******************************************************************/
+#kontaktLogo {display:block; margin:0 auto 30px;}
+#contentKontakt h3 {margin-top:30px;}
+#contentKontakt a {color:#333333;}
+
+
+.content {}
+
+
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+  
+.ui-icon-iconCheck {background-image:url(../images/tabCheck@2x.png);background-size:cover;width:30px;height:30px;}
+.ui-icon-iconKlassen {background-image:url(../images/tabLagerklassen@2x.png);background-size:cover;width:30px;height:30px;}
+.ui-icon-iconKontakt {background-image:url(../images/tabKontakt@2x.png);background-size:cover;width:30px;height:30px;}
+
+}
+
+
+/* JQUERY MOBILE OVERWRITE */
+.ui-li .ui-btn-text a.ui-link-inherit {white-space:normal;}
+
+

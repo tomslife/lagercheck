@@ -1,0 +1,1168 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lager Check</title>
+<link rel="stylesheet" type="text/css" href="css/eskaTheme.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.1.css" />
+<link rel="stylesheet" type="text/css" href="scripts/iScrollView/jquery.mobile.iscrollview.css" />
+<link rel="stylesheet" type="text/css" href="scripts/iScrollView/jquery.mobile.iscrollview-pull.css" />
+
+<link rel="stylesheet" type="text/css" href="css/common.css">
+
+<script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.mobile-1.3.1.min.js"></script>
+<script type="text/javascript" src="scripts/iScroll/iscroll.js"></script>
+<script type="text/javascript" src="scripts/iScrollView/jquery.mobile.iscrollview.js"></script>
+
+<script src="scripts/lgkLogic.js"></script>
+<script src="scripts/common.js"></script>
+
+<!-- Viewport, WebApp + Icon -->
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-startup-image" href="images/splash/ios/splash-2x.png"> <!-- iPhone Retina -->
+<!-- link rel="apple-touch-icon-precomposed" href="images/icons/ios/icon-144.png" /> <!-- For iOS + Android -->
+<!-- Temporary Beta -->
+<link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon_beta.png" /> <!-- For iOS + Android -->
+
+
+</head>
+
+<body>
+
+<!-- CHECK TAB --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Check.lbi" --><div data-role="page" class="page" id="CheckTab" data-theme="a">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header" data-theme="a">
+		<h1>Lager Check</h1>
+	</header>
+
+	<div data-role="content" class="content" id="contentCheck">
+
+	
+	<table width="100%" height="100%" cellpadding="0" cellspacing="0" id="lgkButtonTable">
+	
+	<tr>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="1">1</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="2">2 A</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="3">2 B</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="4">3</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="5">4.1 A</td>
+	</tr>
+	<tr>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="6">4.1 B</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="7">4.2</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="8">4.3</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="9">5.1 A</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="10">5.1 B</td>
+	</tr>
+	<tr>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="11">5.1 C</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="12">5.2</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="13">6.1 A</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="14">6.1 B</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="15">6.1 C</td>
+	</tr>
+	<tr>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="16">6.1 D</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="17">6.2</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="18">7</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="19">8 A</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="20">8 B</td>
+	</tr>
+	<tr>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="21">10</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="22">11</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="23">12</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="24">13</td>
+		<td class="lgkButton lgkButtonInitial lgkButtonHover" id="25">10-13</td>
+	</tr>
+	<tr>
+		<td class="resultButton" id="resultButton" colspan="5"><a href='#popupDialog' data-rel='popup' data-position-to='window' data-role='none' data-inline='true' data-transition='pop' data-theme='b' id="resultAnchor"><p id="resultLabelSpan">Wählen Sie Lagerklassen zur Prüfung.</p></a></td>
+	</tr>
+	</table>
+	
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-1.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs ui-btn-active ui-state-persist">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Popup.lbi" -->
+
+<div data-role="popup" id="popupDialog" data-overlay-theme="a" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
+
+    <div data-role="content" id="popupContent" class="ui-corner-bottom ui-content">
+	
+        <h3>Sie haben folgendes<br>gegeneinander geprüft:</h3>
+		<table id="popupLGK" cellpadding="0" cellspacing="0">
+			
+		
+		
+		</table>
+		<h3 id="popupResultConclusion"></h3>
+        <a href="#CheckTab" data-role="none" data-inline="false" data-transition="flow" data-theme="a" style="text-align:center" id="zurueckButton">Zurück</a>
+    </div>
+</div><!-- #EndLibraryItem --></div>
+<!-- #EndLibraryItem --><!-- LAGERKLASSEN TAB --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Lagerklassen.lbi" --><!-- PRELOAD IMAGES -->
+<img src="file:///Macintosh HD/Users/Tom/Dropbox/Websites/toro-digital/sites/eska/Library/images/BackButtonMitte.png" style="opacity:0.0">
+
+<div data-role="page" id="LagerklassenTab">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>Lagerklassen</h1>
+	</header>
+	
+	<div data-role="content" class="content" id="contentLagerklassen" data-theme="b" data-iscroll>
+
+		<ul data-role="listview" class="listview" data-icon="iconArrow">
+			<li><a href="#LGK-1" data-transition="slidefade"><table><td class="listViewNumber">1</td><td>Explosive Stoffe</td></table></a></li>
+			<li><a href="#LGK-2A" data-transition="slidefade"><table><td class="listViewNumber">2 A</td><td>Gase</td></table></a></li>
+			<li><a href="#LGK-2B" data-transition="slidefade"><table><td class="listViewNumber">2 B</td><td>Aerosole</td></table></a></li>
+			<li><a href="#LGK-3" data-transition="slidefade"><table><td class="listViewNumber">3</td><td>Entzündbare flüssige Stoffe</td></table></a></li>
+			<li><a href="#LGK-41A" data-transition="slidefade"><table><td class="listViewNumber">4.1 A</td><td>Sonstige explosionsgefährliche Stoffe</td></table></a></li>
+			<li><a href="#LGK-41B" data-transition="slidefade"><table><td class="listViewNumber">4.1 B</td><td>Entzündbare feste oder desensibilisierte Stoffe</td></table></a></li>
+			<li><a href="#LGK-42" data-transition="slidefade"><table><td class="listViewNumber">4.2</td><td>Selbstentzündliche Stoffe</td></table></a></li>
+			<li><a href="#LGK-43" data-transition="slidefade"><table><td class="listViewNumber">4.3</td><td>Stoffe, die in Berührung mit Wasser entzündliche Gase bilden</td></table></a></li>
+			<li><a href="#LGK-51A" data-transition="slidefade"><table><td class="listViewNumber">5.1 A</td><td>Stark oxidierend wirkende Stoffe</td></table></a></li>
+			<li><a href="#LGK-51B" data-transition="slidefade"><table><td class="listViewNumber">5.1 B</td><td>Oxidierend wirkende Stoffe</td></table></a></li>
+			<li><a href="#LGK-51C" data-transition="slidefade"><table><td class="listViewNumber">5.1 C</td><td>Ammoniumnitrat und ammoniumnitrathaltige</td></table></a></li>
+			<li><a href="#LGK-52" data-transition="slidefade"><table><td class="listViewNumber">5.2</td><td>Organische Peroxide selbstzersetzliche Stoffe</td></table></a></li>
+			<li><a href="#LGK-61A" data-transition="slidefade"><table><td class="listViewNumber">6.1 A</td><td>Brennbare akut giftige Stoffe</td></table></a></li>
+			<li><a href="#LGK-61B" data-transition="slidefade"><table><td class="listViewNumber">6.1 B</td><td>Nichtbrennbare akut giftige Stoffe</td></table></a></li>
+			<li><a href="#LGK-61C" data-transition="slidefade"><table><td class="listViewNumber">6.1 C</td><td>Brennbare giftige oder chronisch wirkende Stoffe</td></table></a></li>
+			<li><a href="#LGK-61D" data-transition="slidefade"><table><td class="listViewNumber">6.1 D</td><td>Nichtbrennbare giftige oder chronisch wirkende Stoffe</td></table></a></li>
+			<li><a href="#LGK-62" data-transition="slidefade"><table><td class="listViewNumber">6.2</td><td>Ansteckungsgefährliche Stoffe</td></table></a></li>
+			<li><a href="#LGK-7" data-transition="slidefade"><table><td class="listViewNumber">7</td><td>Radioaktive Stoffe</td></table></a></li>
+			<li><a href="#LGK-8A" data-transition="slidefade"><table><td class="listViewNumber">8 A</td><td>Brennbare ätzende Stoffe</td></table></a></li>
+			<li><a href="#LGK-8B" data-transition="slidefade"><table><td class="listViewNumber">8 B</td><td>Nichtbrennbare ätzende Stoffe</td></table></a></li>
+			<li><a href="#LGK-10" data-transition="slidefade"><table><td class="listViewNumber">10</td><td>Brennbare Flüssigkeiten, soweit nicht LGK 3</td></table></a></li>
+			<li><a href="#LGK-11" data-transition="slidefade"><table><td class="listViewNumber">11</td><td>Brennbare Feststoffe</td></table></a></li>
+			<li><a href="#LGK-12" data-transition="slidefade"><table><td class="listViewNumber">12</td><td>Nichtbrennbare Flüssigkeiten</td></table></a></li>
+			<li><a href="#LGK-13" data-transition="slidefade"><table><td class="listViewNumber">13</td><td>Nichtbrennbare Feststoffe</td></table></a></li>
+			<li><a href="#LGK-1013" data-transition="slidefade"><table><td class="listViewNumber">10-13</td><td>Sonstige brennbare und nichtbrennbare Stoffe</td></table></a></li>
+		</ul>	
+	
+	
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div>
+<!-- #EndLibraryItem --><!-- KONTAKT TAB --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Kontakt.lbi" -->
+
+<div data-role="page" id="KontaktTab">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>Kontakt</h1>
+	</header>
+	
+	<div data-role="content" class="content" id="contentKontakt">
+	
+	<img src="images/logoEska.png" width="201" height="60" id="kontaktLogo">
+	
+	<p>
+	<table>	
+	<tr>
+		<td>Telefon:</td><td><a href="tel:+49403068170">+49 40 306 81 70</a></td>
+	</tr>
+	<tr>
+		<td>E-Mail:</td><td><a href="mailto:service@eska.eu">service@eska.eu</a></td>
+	</tr>
+	<tr>
+		<td>Website:</td><td><a href="http://www.eska.eu" target="_blank">www.eska.eu</a></td>
+	</tr>
+	</table>
+	</p>
+
+	<p>
+		<h3>SPENDEN SIE FÜR <span class="nobr">KREBSKRANKE KINDER</span></h3>
+		Diese App wird Ihnen von der eska Ingenieurgesellschaft kostenlos zur Verfügung gestellt.<br>
+		Wir würden uns sehr freuen, wenn Sie das "Forschungsinstitut Kinderkrebs-Zentrum Hamburg" mit einer Spende unterstützen.<br><br>
+		<strong>Forschungsinstitut<br>Kinderkrebs-Zentrum Hamburg<br>
+		Kontonummer: 4154126001<br>
+		BLZ: 20090700</strong><br><br>
+		Informieren Sie sich über die Arbeit des Forschungsinstitutes:<br>
+		<a href="http://www.kinderkrebs-forschung.de" target="_blank">www.kinderkrebs-forschung.de</a><br><br>
+		Vielen Dank für Ihre Spende!
+		
+	</p>
+	
+	
+	
+	</div>
+	
+	<!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-3.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs ui-btn-active ui-state-persist">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-1 --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-1.lbi" -->
+
+<div data-role="page" class="page" id="LGK-1">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>1</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-1" data-iscroll>
+	
+	<h1>Lagerklasse 1:</h1>
+	<h2>Explosive Gefahrstoffe</h2>
+	<p>In der Lagerklasse 1 werden Gefahrstoffe eingeteilt, die nach</p>
+	<ol>
+		<li>CLP-VO in die Gefahrenklasse "explosive Stoffe" eingestuft sind und als instabil, explosiv oder in die Unterklassen 1.1 bis 1.5 eingestuft sind, sie werden gekennzeichnet mit den H-Sätzen H200, H201, H202, H203, H204 oder H205,</li>
+		<li>Gefahrengutrecht in die Klasse 1, Unterklassen 1.1 bis 1.6 eingestuft sind.</li>
+	</ol>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK 2A --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-2A.lbi" -->
+
+<div data-role="page" class="page" id="LGK-2A" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>2 A</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-2A" data-iscroll>
+	
+	<h1>Lagerklasse 2 A:</h1>
+	<h2>Gase</h2>
+	<p>Zur Lagerklasse 2 A zählen Gase, die nach</p>
+	<ol>
+		<li><p>CLP-VO gekennzeichnet werden
+			<ol type="a">
+				<li>als verdichte, verflüssigte, unter Druck gelöste Gase mit H280 oder H281,</li>
+				<li>als entzündbare Gase mit H220 oder H221,</li>
+				<li>als oxidierende Gase mit H270,</li>
+			</ol>
+		</p></li>
+		<li><p>Gefahrengutrecht der Klasse 2 zugeordnet sind. In diese Klasse werden auch die Stoffe UN 1051 Fluorwasserstoff und UN 1052 Cyanwasserstoff eingestuft, die im Gefahrengutrecht anderen Klassen zugeordnet sind.</p></li>
+	</ol>
+	<p>Ausgenommen sind die Druckgaspackungen, die der UN-Nummer 1950 zugeordnet sind. Diese sind der Klasse 2 B zugeordnet.</p>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-2B --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-2B.lbi" -->
+
+<div data-role="page" class="page" id="LGK-2B" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>2 B</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-2B" data-iscroll>
+	
+	<h1>Lagerklasse 2 B:</h1>
+	<h2>Aerosole</h2>
+	<p>In die Lagerklasse 2 B werden Gefahrstoffe eingeteilt, die nach</p>
+	<ol>
+		<li>CLP–VO mit den H-Sätzen H222 oder H223 gekennzeichnet werden,</li>
+		<li>die nach Gefahrgutrecht der UN-Nummer 1950 zugeordnet sind.</li>
+	</ol>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-3 --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-3.lbi" --><div data-role="page" class="page" id="LGK-3" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>3</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-3" data-iscroll>
+	
+	<h1>Lagerklasse 3:</h1>
+	<h2>Entzündbare Flüssigkeiten</h2>
+	<p>Der Lagerklasse 3 werden zugeordnet Flüssigkeiten, die nach</p>
+	<ol>
+		<li>GefStoffV mit den R-Sätzen R10, R11 oder R12,</li>
+		<li>CLP–VO mit den H-Sätzen H224, H225 oder H226 gekennzeichnet sind,</li>
+		<li>Gefahrgutrecht der Klasse 3 zugeordnet sind.</li>
+	</ol>
+	<p>Anmerkung:<br>
+	Viskose brennbare Flüssigkeiten müssen nicht zwangsläufig aufgrund ihres Flammpunktes der Lagerklasse 3 zugeordnet werden. Eine Einstufung in Lagerklasse 10 kann aufgrund der Viskosität im Einzelfall unter Berücksichtigung der Kriterien Brandausbreitung und Bildung explosionsfähiger Atmosphäre entschieden werden.</p>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-41A --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-41A.lbi" -->
+
+<div data-role="page" class="page" id="LGK-41A" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>4.1 A</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-41A" data-iscroll>
+	
+	<h1>Lagerklasse 4.1 A:</h1>
+	<h2>Sonstige explosionsgefährliche Gefahrstoffe</h2>
+	<p>Sonstige explosionsgefährliche Gefahrstoffe sind ausführlich in der zweiten Verordnung zum Sprengstoffgesetz (2. SprengV) geregelt und dort in die Lagergruppen I bis III eingeteilt. Das Gefahrgutrecht ist hier nicht ausreichend und wird daher zur Einstufung nicht herangezogen. Zusätzlich kommen auch flüssige sonstige explosionsgefährliche Gefahrstoffe hinzu.</p>
+	<p>Der Lagerklasse 4.1A werden zugeordnet</p>
+	<ol>
+		<li>Stoffe der Lagergruppen I bis III nach 2. SprengV,</li>
+		<li>selbstzersetzliche Stoffe Typ A und Typ B (gekennzeichnet mit H240 bzw. H241),</li>
+		<li>organische Peroxide Typ A und Typ B (gekennzeichnet mit H240 bzw. H241),</li>
+		<li>Stoffe, die nach GefStoffV mit R2 oder R3 gekennzeichnet sind.</li>
+	</ol>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-41B --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-41B.lbi" -->
+
+<div data-role="page" class="page" id="LGK-41B" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>4.1 B</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-41B" data-iscroll>
+	
+	<h1>Lagerklasse 4.1 B:</h1>
+	<h2>Entzündbare feste Gefahrstoffe</h2>
+	<p>In die Lagerklasse 4.1 B werden entzündbare feste Gefahrstoffe eingeteilt, die nach</p>
+	<ol>
+		<li>CLP–VO mit dem H-Satz H228 gekennzeichnet werden,</li>
+		<li>GefStoffV als Feststoffe mit R11 gekennzeichnet sind,</li>
+		<li>Gefahrgutrecht den entzündbaren Feststoffen oder den desensibilisierten explosiven Feststoffen der Klasse 4.1 zugeordnet sind.</li>
+	</ol>
+	<p>Gefahrstoffe, die nach Gefahrgutrecht der Klasse 4.1 angehören und nicht z. B. mit R11 gekennzeichnet sind, bedürfen einer Einzelfallbetrachtung (z. B. Schwefel, Naphthalin, Paraformaldehyd).</p>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-42 --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-42.lbi" -->
+
+<div data-role="page" class="page" id="LGK-42" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>4.2</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-42" data-iscroll>
+	
+	<h1>Lagerklasse 4.2:</h1>
+	<h2>Pyrophore oder selbsterhitzungsfähige Gefahrstoffe</h2>
+	<p>Der Lagerklasse 4.2 werden flüssige und feste pyrophore und selbsterhitzungsfähige Gefahrstoffe zugeordnet, die nach</p>
+	<ol>
+		<li>CLP–VO mit dem H-Satz H250 bzw. H251 oder H252,</li>
+		<li>GefStoffV mit R17 gekennzeichnet,</li>
+		<li>Gefahrgutrecht als selbstentzündliche Stoffe in der Klasse 4.2 zugeordnet sind.</li>
+	</ol>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-43 --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-43.lbi" -->
+
+<div data-role="page" class="page" id="LGK-43" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>4.3</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-43" data-iscroll>
+	
+	<h1>Lagerklasse 4.3:</h1>
+	<h2>Gefahrstoffe, die in Berührung mit Wasser entzündbare Gase entwickeln</h2>
+	<p>Stoffe werden der Lagerklasse 4.3 zugeordnet, die nach</p>
+	<ol>
+		<li>CLP–VO mit dem H-Satz H260 oder H261 gekennzeichnet sind,</li>
+		<li>GefStoffV mit R15 gekennzeichnet sind,</li>
+		<li>Gefahrgutrecht der Klasse 4.3 zugeordnet sind.</li>
+	</ol>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-51A --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-51A.lbi" -->
+
+<div data-role="page" class="page" id="LGK-51A" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>5.1 A</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-51A" data-iscroll>
+	
+	<h1>Lagerklasse 5.1 A:</h1>
+	<h2>Stark oxidierende Gefahrstoffe</h2>
+	<p>(1) Diese Lagerklassen umfassen oxidierende Stoffe, die aufgrund ihres Oxidationspotentiales die Abbrandgeschwindigkeit brennbarer Stoffe erheblich erhöhen bzw. in Kontakt mit brennbaren Stoffen diese entzünden können.</p>
+	<p>(2) Ammoniumnitrat und ammoniumnitrathaltige Zubereitungen der Gruppen A bis C nach TRGS 511 sowie die Untergruppen DIII und DIV des Anhangs 3 Nr. 6 der GefStoffV werden zusätzlich dieser Lagerklasse zugeordnet.</p>
+	<p>Der Lagerklasse 5.1A werden Stoffe zugeordnet, die in Anlage 8 aufgelistet sind.</p>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-51B --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-51B.lbi" -->
+
+<div data-role="page" class="page" id="LGK-51B" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>5.1 B</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-51B" data-iscroll>
+	
+	<h1>Lagerklasse 5.1 B:</h1>
+	<h2>Oxidierende Gefahrstoffe</h2>
+	<p>In die Lagerklasse 5.1B werden Gefahrstoffe eingeteilt, die nicht in Anlage 8 aufgeführt sind und nach</p>
+	<ol>
+		<li>CLP–VO mit den H-Sätzen H271 oder H272 gekennzeichnet sind,</li>
+		<li>Gefahrgutrecht der Klasse 5.1 zugeordnet sind.</li>
+	</ol>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-51C --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-51C.lbi" --><div data-role="page" class="page" id="LGK-51C" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>5.1 C</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-51C" data-iscroll>
+	
+	<h1>Lagerklasse 5.1 C:</h1>
+	<h2>Ammoniumnitrat und ammoniumnitrathaltige Zubereitungen</h2>
+	<p>In die Lagerklasse 5.1C werden Gefahrstoffe eingeteilt, die in den Gruppen A bis C und die Untergruppen DIII und DIV des Anhangs 3 Nr. 6 der GefStoffV genannt sind. Stoffe der Untergruppe DI und DII des Anhangs der GefStoffV gehören zur Lagerklasse 12.
+	<br><br><br><br><br><br><br><br>&nbsp;</p>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-52 --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-52.lbi" -->
+
+<div data-role="page" class="page" id="LGK-52" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>5.2</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-52" data-iscroll>
+	
+	<h1>Lagerklasse 5.2:</h1>
+	<h2>Organische Peroxide und selbstzersetzliche Gefahrstoffe</h2>
+	<p>Organische Peroxide sind in der Unfallverhütungsvorschrift BGV B4 geregelt und dort in die Gruppen OP I bis OP IV eingeteilt. Die Lagerklasse 5.2 umfasst</p>
+	<ol>
+		<li>organische Peroxide Typen C, D, E oder F und selbstzersetzliche Stoffe Typen C, D, E oder F, die nach GHS mit dem H-Satz H242 gekennzeichnet sind,</li>
+		<li>organische Peroxide, die gemäß Gefahrgutrecht in Klasse 5.2 eingestuft sind, sofern es sich nicht um organische Peroxide Typ A und Typ B handelt,</li>
+		<li>selbstzersetzliche Stoffe, die gemäß Gefahrgutrecht in Klasse 4.1 eingestuft sind, sofern es sich nicht um selbstzersetzliche Stoffe der Typ A und Typ B handelt.</li>		
+	</ol>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-61A --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-61A.lbi" -->
+
+<div data-role="page" class="page" id="LGK-61A" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>6.1 A</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-61A" data-iscroll>
+	
+	<h1>Lagerklasse 6.1 A:</h1>
+	<h2>Brennbare, akut toxische Kat. 1 und 2 / sehr giftige Gefahrstoffe</h2>
+	<p>Zu diesen Lagerklassen gehören akut toxische Gefahrstoffe der Kategorien 1, 2 oder 3 nach CLP–VO und, von Ausnahmen abgesehen, die mit dem Piktogramm GHS08 "Gesundheitsgefahr" und dem Signalwort "Gefahr" gekennzeichneten Gefahrstoffe, sowie die nach Gefahrstoffverordnung mit den Gefahrenbezeichnungen "sehr giftig" (T+) und "giftig" (T) gekennzeichnet sind.</p>
+	<p>In die Lagerklasse 6.1A werden Gefahrstoffe eingeteilt, die nach</p>
+	<ol>
+		<li>CLP–VO mit den H300, H310 oder H330,</li>
+		<li>GefStoffV mit den R26, R27 oder R28 gekennzeichnet sind,</li>
+		<li>nach dem Transportrecht der Gefahrklasse 6.1, Verpackungsgruppe I oder II zugeordnet sind.</li>		
+	</ol>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-61B --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-61B.lbi" -->
+
+<div data-role="page" class="page" id="LGK-61B" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>6.1 B</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-61B" data-iscroll>
+	
+	<h1>Lagerklasse 6.1 B:</h1>
+	<h2>Nicht brennbare, akut toxische Kat. 1 und 2 / sehr giftige Gefahrstoffe</h2>
+	<p>Zu diesen Lagerklassen gehören akut toxische Gefahrstoffe der Kategorien 1, 2 oder 3 nach CLP–VO und, von Ausnahmen abgesehen, die mit dem Piktogramm GHS08 "Gesundheitsgefahr" und dem Signalwort "Gefahr" gekennzeichneten Gefahrstoffe, sowie die nach Gefahrstoffverordnung mit den Gefahrenbezeichnungen "sehr giftig" (T+) und "giftig" (T) gekennzeichnet sind.</p>
+	<p>Der Lagerklasse 6.1B werden Gefahrstoffe zugeordnet, die wie in der Lagerklasse 6.1A gekennzeichnet werden, jedoch</p>
+	<ol>
+		<li>keine brennbare Flüssigkeiten sind, ausgenommen wässrige Zubereitungen mit brennbaren sehr giftigen Stoffen sowie</li>
+		<li>keine brennbaren Feststoffe sind.</li>
+	</ol>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-61C --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-61C.lbi" -->
+
+<div data-role="page" class="page" id="LGK-61C" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>6.1 C</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-61C" data-iscroll>
+	
+	<h1>Lagerklasse 6.1 C:</h1>
+	<h2>Brennbare, akut toxische Kat. 3 / giftige oder chronisch wirkende Gefahrstoffe</h2>
+	<p>Zu diesen Lagerklassen gehören akut toxische Gefahrstoffe der Kategorien 1, 2 oder 3 nach CLP–VO und, von Ausnahmen abgesehen, die mit dem Piktogramm GHS08 "Gesundheitsgefahr" und dem Signalwort "Gefahr" gekennzeichneten Gefahrstoffe, sowie die nach Gefahrstoffverordnung mit den Gefahrenbezeichnungen "sehr giftig" (T+) und "giftig" (T) gekennzeichnet sind.</p>
+	<p>Der Lagerklasse 6.1C werden die akut giftigen und chronisch wirkende Stoffe zugeordnet, die brennbar sind und</p>
+	<ol>
+		<li><p>nach CLP–VO mit den H-Sätzen
+			<ol type="a">
+				<li>H301 bzw. 311 oder 331 (akute Toxizität),</li>
+				<li>H340 (Keimzell-Mutagenität),</li>
+				<li>H350 (Karzinogenität),</li>
+				<li>H360 (Reproduktionstoxizität),</li>
+				<li>H370 (Spezifische Zielorgan-Toxizität (STOT) bei einmaliger Exposition),</li>
+				<li>H372 (Spezifische Zielorgan-Toxizität (STOT) bei wiederholter Exposition),</li>
+			</ol>
+		</p></li>
+		<li><p>nach GefStoffV mit
+			<ol type="a">
+				<li>R23 bzw. R24 oder R25,</li>
+				<li>R45 oder R49,</li>
+				<li>R60 oder R61,</li>
+				<li>R39/23 bis R39/28,</li>
+				<li>R48/23 bis R48/28 gekennzeichnet sind;</li>
+			</ol>
+		</p></li>
+		<li>nach dem Transportrecht der Gefahrklasse 6.1, Verpackungsgruppe III zugeordnet sind.</li>
+	</ol>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-61D --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-61D.lbi" -->
+
+<div data-role="page" class="page" id="LGK-61D" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>6.1 D</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-61D" data-iscroll>
+	
+	<h1>Lagerklasse 6.1 D:</h1>
+	<h2>Nicht brennbare, akut toxische Kat. 3 / giftige oder chronisch wirkende Gefahrstoffe</h2>
+	<p>Wie 6.1 C jedoch nicht brennbar.</p>
+
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-62 --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-62.lbi" -->
+
+<div data-role="page" class="page" id="LGK-62" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>6.2</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-62" data-iscroll>
+	
+	<h1>Lagerklasse 6.2:</h1>
+	<h2>Ansteckungsgefährliche Stoffe</h2>
+	<p>Zu dieser Lagerklasse gehören die Gefahrgüter der Klasse 6.2.</p>
+
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-7 --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-7.lbi" -->
+
+<div data-role="page" class="page" id="LGK-7" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>7</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-7" data-iscroll>
+	
+	<h1>Lagerklasse 7:</h1>
+	<h2>Radioaktive Stoffe</h2>
+	<p>Zu dieser Lagerklasse gehören solche Stoffe, Zubereitungen oder Erzeugnisse,</p>
+	<ol>
+		<li>bei denen der Umgang gemäß § 4 Strahlenschutzverordnung genehmigungs- bzw. anzeigebedürftig ist,</li>
+		<li>die nach Gefahrgutrecht in die Klasse 7 eingestuft sind.</li>
+	</ol>
+	
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-8A --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-8A.lbi" -->
+
+<div data-role="page" class="page" id="LGK-8A" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>8 A</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-8A" data-iscroll>
+	
+	<h1>Lagerklasse 8 A:</h1>
+	<h2>Brennbare ätzende Gefahrstoffe</h2>
+	<p>Stoffe werden der Lagerklasse 8 zugeordnet, die nach</p>
+	<ol>
+		<li>CLP–VO mit den H-Sätzen H314,</li>
+		<li>GefStoffV mit den R-Sätzen R34 oder R35 gekennzeichnet werden oder</li>
+		<li>Gefahrgutrecht in die Klasse 8 eingestuft sind.</li>
+	</ol>
+	<p>Dieser Lagerklasse gehören an</p>
+	<ol>
+		<li>brennbare Flüssigkeiten mit einem Flammpunkt > 55 °C,</li>
+		<li>Feststoffe, die erfahrungsgemäß brennbar sind,</li>
+	</ol>
+	<p>die als ätzend gemäß Definition der Lagerklasse 8 eingestuft sind.</p>
+
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-8B --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-8B.lbi" -->
+
+<div data-role="page" class="page" id="LGK-8B" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>8 B</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-8B" data-iscroll>
+	
+	<h1>Lagerklasse 8 B:</h1>
+	<h2>Nicht brennbare ätzende Gefahrstoffe</h2>
+	<p>Stoffe werden der Lagerklasse 8 zugeordnet, die nach</p>
+	<ol>
+		<li>CLP–VO mit den H-Sätzen H314,</li>
+		<li>GefStoffV mit den R-Sätzen R34 oder R35 gekennzeichnet werden oder</li>
+		<li>Gefahrgutrecht in die Klasse 8 eingestuft sind.</li>
+	</ol>
+	<p>Dieser Lagerklasse gehören an</p>
+	<ol>
+		<li>nicht brennbare Flüssigkeiten,</li>
+		<li>nicht brennbare Feststoffe,</li>
+	</ol>
+	<p>die als ätzend gemäß Definition der Lagerklasse 8 eingestuft sind.</p>
+
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-10 --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-10.lbi" -->
+
+<div data-role="page" class="page" id="LGK-10" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>10</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-10" data-iscroll>
+	
+	<h1>Lagerklasse 10:</h1>
+	<h2>Brennbare Flüssigkeiten</h2>
+	<p>In die Lagerklasse 10 werden alle Flüssigkeiten eingeteilt, die nicht in eine der Lagerklassen 1 bis 9 eingeteilt sind und einen Flammpunkt > 60° C haben.</p>
+
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-11 --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-11.lbi" -->
+
+<div data-role="page" class="page" id="LGK-11" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>11</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-11" data-iscroll>
+	
+	<h1>Lagerklasse 11:</h1>
+	<h2>Brennbare Feststoffe</h2>
+	<p>Die Lagerklasse erfasst Feststoffe, die erfahrungsgemäß brennbar sind. Die Brennbarkeit kann auch über die Kriterien über die Einstufung Brennzahl 2, 3, 4 und 5 (bei Raumtemperatur) nach VDI 2263 Blatt 1 bestimmt werden.</p>
+
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-12 --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-12.lbi" -->
+
+<div data-role="page" class="page" id="LGK-12" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>12</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-12" data-iscroll>
+	
+	<h1>Lagerklasse 12:</h1>
+	<h2>Nicht brennbare Flüssigkeiten</h2>
+	<p>Flüssigkeiten, die nicht brennbar sind oder deren Entzündungsneigung gering ist.</p>
+
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-13 --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-13.lbi" -->
+
+<div data-role="page" class="page" id="LGK-13" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>13</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-13" data-iscroll>
+	
+	<h1>Lagerklasse 13:</h1>
+	<h2>Nicht brennbare Feststoffe</h2>
+	<p>Feststoffe, die erfahrungsgemäß nicht brennbar sind und die Kriterien der Lagerklasse 11 nicht erfüllen.</p>
+
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --><!-- LGK-1013 --><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/LGK-1013.lbi" -->
+
+<div data-role="page" class="page" id="LGK-1013" data-add-back-btn="true" data-back-btn-text="Lagerklassen">
+
+	<header data-role="header" class="header" data-position="fixed" data-tap-toggle="false" data-id="header">
+		<h1>10-13</h1>
+		<a href="#LagerklassenTab" data-role="none" data-transition="slidefade" data-direction="reverse">
+		<div class="navBarBackButton">
+		<img class="navBarBackButtonLinks" src="images/BackButtonLinks.png">
+		<span class="navBarBackButtonMitte">Lagerklassen</span>	
+		<img class="navBarBackButtonRechts" src="images/BackButtonRechts.png">
+		</div>
+		</a>
+	</header>
+	
+	<div data-role="content" class="content contentKlasse" id="content-LGK-1013" data-iscroll>
+	
+	<h1>Lagerklasse 10-13:</h1>
+	<h2>Sonstige brennbare und nichtbrennbare Stoffe</h2>
+	<p>(1) Die Lagerklassen 10–13 können auch zusammengefasst werden und dann entsprechend den Zusammenlagerungsregeln für die LGK 11 behandelt werden. Es handelt sich hierbei hauptsächlich um Flüssigkeiten oder Feststoffe, die weder nach Gefahrstoffrecht noch nach Gefahrgutrecht zu kennzeichnen sind.</p>
+	<p>(2) Desweiteren kann es sich hierbei um Gefahrstoffe nach Gefahrstoffverordnung mit den Gefahrenbezeichnungen Xn, Xi oder N sowie um Feststoffe oder Flüssigkeiten handeln, die nach dem Gefahrgutrecht in die Klasse 9 eingestuft sind.</p>
+
+	</div><!-- #BeginLibraryItem "/sites/eska/Lager Check/Library/Footer-2.lbi" -->
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer" data-theme="a">
+
+	<div data-role="navbar" class="footerDiv" id="navbar">
+		<ul>
+			<li><a href="#CheckTab" data-transition="none" data-icon="iconCheck" onClick="resetCheckButtons();" class="tabs">Check</a></li>
+			<li><a href="#LagerklassenTab" data-transition="none" data-icon="iconKlassen" class="tabs ui-btn-active ui-state-persist">Lagerklassen</a></li>
+			<li><a href="#KontaktTab" data-transition="none" data-icon="iconKontakt" class="tabs">Kontakt</a></li>
+		</ul>
+	</div><!-- /navbar -->
+
+</div><!-- /footer --><!-- #EndLibraryItem --></div><!-- #EndLibraryItem --></body>
+</html>
